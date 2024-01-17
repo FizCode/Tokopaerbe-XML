@@ -4,7 +4,7 @@ import dev.fizcode.tokopaerbe_xml.datastore.SharedPrefDatastore
 import kotlinx.coroutines.flow.firstOrNull
 import javax.inject.Inject
 
-class OnboardingRepository @Inject constructor(
+class OnBoardingRepository @Inject constructor(
     private val sharedPrefDatastore: SharedPrefDatastore
 ) {
 

@@ -14,11 +14,14 @@
         <action
             android:id="@+id/action_SplashFragment_to_OnBoardingFragment"
             app:destination="@id/OnBoardingFragment" />
+        <action
+            android:id="@+id/action_SplashFragment_to_signinFragment"
+            app:destination="@id/signinFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/OnBoardingFragment"
-        android:name="dev.fizcode.tokopaerbe_xml.ui.onboarding.OnboardingFragment"
+        android:name="dev.fizcode.tokopaerbe_xml.ui.onboarding.OnBoardingFragment"
         android:label="@string/onboard_fragment_label"
         tools:layout="@layout/fragment_onboarding">
         <action

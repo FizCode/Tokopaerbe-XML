@@ -5,12 +5,11 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import dev.fizcode.tokopaerbe_xml.R
 import dev.fizcode.tokopaerbe_xml.databinding.ImgCointainerOnboardingBinding
 
-class OnboardingAdapter(
+class OnBoardingAdapter(
     private var imageList: ArrayList<Int>
-) : RecyclerView.Adapter<OnboardingAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<OnBoardingAdapter.ViewHolder>() {
 
     inner class ViewHolder(
         val binding: ImgCointainerOnboardingBinding

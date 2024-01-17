@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.fizcode.tokopaerbe_xml.datastore.SharedPrefDatastore
-import dev.fizcode.tokopaerbe_xml.repository.OnboardingRepository
+import dev.fizcode.tokopaerbe_xml.repository.OnBoardingRepository
 import javax.inject.Singleton
 
 @Module
@@ -16,8 +16,8 @@ class AppModule {
     @Provides
     fun provideOnboardingRepository(
         sharedPrefDatastore: SharedPrefDatastore
-    ): OnboardingRepository {
-        return OnboardingRepository(
+    ): OnBoardingRepository {
+        return OnBoardingRepository(
             sharedPrefDatastore = sharedPrefDatastore
         )
     }

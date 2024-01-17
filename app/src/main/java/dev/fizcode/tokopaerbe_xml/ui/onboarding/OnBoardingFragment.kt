@@ -16,14 +16,14 @@ import dev.fizcode.tokopaerbe_xml.R
 import dev.fizcode.tokopaerbe_xml.databinding.FragmentOnboardingBinding
 
 @AndroidEntryPoint
-class OnboardingFragment : Fragment() {
+class OnBoardingFragment : Fragment() {
 
     private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
 
-    val viewModel: OnBoardingViewModel by viewModels()
+    private val viewModel: OnBoardingViewModel by viewModels()
 
-    private lateinit var onboardingAdapter: OnboardingAdapter
+    private lateinit var onboardingAdapter: OnBoardingAdapter
     private lateinit var imageList: ArrayList<Int>
     private lateinit var vpOnboarding: ViewPager2
     private lateinit var tabValue: TabLayout
@@ -40,12 +40,12 @@ class OnboardingFragment : Fragment() {
         _binding = FragmentOnboardingBinding.inflate(layoutInflater, container, false)
         val root: View = binding.root
 
-        bindView()
+        bindView(container = container)
 
         return root
     }
 
-    private fun bindView() {
+    private fun bindView(container: ViewGroup?) {
         vpOnboarding = binding.vpOnboarding
         tabValue = binding.tabOnboardingTabView
         imageList = arrayListOf(
@@ -54,11 +54,11 @@ class OnboardingFragment : Fragment() {
             R.drawable.onboard3
         )
 
-        onboardingAdapter = OnboardingAdapter(imageList)
+        onboardingAdapter = OnBoardingAdapter(imageList)
         vpOnboarding.adapter = onboardingAdapter
 
         TabLayoutMediator(tabValue, vpOnboarding) { tab, _ ->
-            tab.customView = layoutInflater.inflate(R.layout.tab_layout_custom, null)
+            tab.customView = layoutInflater.inflate(R.layout.tab_layout_custom, container, false)
         }.attach()
 
         vpOnboarding.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -74,10 +74,12 @@ class OnboardingFragment : Fragment() {
         // onClick Listener
         binding.btnJoin.setOnClickListener {
             viewModel.completeOnboarding()
+            println("fragment JoinButton")
             findNavController().navigate(R.id.action_OnBoardingFragment_to_signupFragment)
         }
         binding.btnSkip.setOnClickListener {
             viewModel.completeOnboarding()
+            println("fragment SkipButton")
             findNavController().navigate(R.id.action_OnBoardingFragment_to_signinFragment)
         }
         binding.btnNext.setOnClickListener {

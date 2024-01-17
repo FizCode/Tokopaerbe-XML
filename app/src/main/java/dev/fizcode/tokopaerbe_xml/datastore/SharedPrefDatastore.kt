@@ -23,9 +23,9 @@ class SharedPrefDatastore @Inject constructor(private val context: Context) {
             listOf(SharedPreferencesMigration(context, Constant.PrefDatastore.PREF_NAME))
     }
 
-    suspend fun getOnboarding(): Flow<Boolean> {
+    fun getOnboarding(): Flow<Boolean> {
         return context.datastoreOnboarding.data.map { preferences ->
-            preferences[Constant.PrefDatastore.ONBOARDING]!!.or(false)
+            preferences[Constant.PrefDatastore.ONBOARDING] as Boolean
         }
     }
 

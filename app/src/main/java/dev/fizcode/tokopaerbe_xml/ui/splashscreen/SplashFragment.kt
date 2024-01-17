@@ -3,6 +3,8 @@ package dev.fizcode.tokopaerbe_xml.ui.splashscreen
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +31,7 @@ class SplashFragment : Fragment() {
     private var _binding: FragmentSplashBinding? = null
     private val binding get() = _binding!!
 
-    val videModel: SplashViewModel by viewModels()
+    val splashViewModel: SplashViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -45,21 +47,17 @@ class SplashFragment : Fragment() {
 
         // Splash Duration and logic to the next fragment
         val animationDuration = 1000L
-        val timer = object : CountDownTimer(3000, 100) {
-            override fun onTick(millisUntilFinished: Long) {
-            }
-
-            override fun onFinish() {
-                videModel.onViewLoaded()
-                startActivity()
-            }
-
-        }
+        val handler = Handler(Looper.getMainLooper())
 
         rotateView(animationDuration)
         translationX(animationDuration)
         translationY(animationDuration)
-        timer.start()
+        handler.postDelayed({
+            println("HelloW")
+            splashViewModel.onViewLoaded()
+        }, 3000)
+
+
         bindViewModel()
 
         return root
@@ -112,16 +110,14 @@ class SplashFragment : Fragment() {
         translateYYellow.start()
     }
 
-    private fun startActivity() {
-        findNavController().navigate(R.id.action_SplashFragment_to_OnBoardingFragment)
-    }
-
     private fun bindViewModel() {
-        /* TODO("Business logic and navigation to onboarding or auth") */
-    }
-
-    private fun bindView() {
-        /* TODO("Not yet implemented") */
+        splashViewModel.shouldSkipOnboarding.observe(viewLifecycleOwner) {
+            if (it) {
+                findNavController().navigate(R.id.action_SplashFragment_to_signinFragment)
+            } else {
+                findNavController().navigate(R.id.action_SplashFragment_to_OnBoardingFragment)
+            }
+        }
     }
 
 
