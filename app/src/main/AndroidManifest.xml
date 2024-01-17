@@ -14,8 +14,10 @@
         android:theme="@style/Theme.TokopaerbeXML"
         tools:targetApi="31">
         <activity
-            android:name=".SplashActivity"
-            android:exported="true">
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.TokopaerbeXML">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

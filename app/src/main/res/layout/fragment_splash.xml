@@ -2,11 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/SplashFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity">
+    tools:context=".ui.splashscreen.SplashFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
+        android:id="@+id/shape_green"
         android:layout_width="150dp"
         android:layout_height="110dp"
         android:background="@drawable/shape_splash_green"
@@ -16,6 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <RelativeLayout
+        android:id="@+id/shape_red"
         android:layout_width="150dp"
         android:layout_height="110dp"
         android:background="@drawable/shape_splash_red"
@@ -25,6 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <RelativeLayout
+        android:id="@+id/shape_yellow"
         android:layout_width="150dp"
         android:layout_height="110dp"
         android:background="@drawable/shape_splash_yellow"
@@ -34,11 +39,11 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/img_splash"
         android:contentDescription="@string/image_spalashscreen"
         android:layout_width="160dp"
         android:layout_height="120dp"
-        app:srcCompat="@drawable/splash"
+        app:srcCompat="@drawable/ic_splash"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
