@@ -97,3 +97,7 @@ dependencies {
     testImplementation("com.google.dagger:hilt-android-testing:2.48.1")
     kaptTest("com.google.dagger:hilt-compiler:2.48.1")
 }
+
+kapt {
+    correctErrorTypes = true
+}

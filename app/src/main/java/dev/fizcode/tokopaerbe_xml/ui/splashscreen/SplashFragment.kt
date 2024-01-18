@@ -2,7 +2,6 @@ package dev.fizcode.tokopaerbe_xml.ui.splashscreen
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
@@ -15,23 +14,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.fizcode.tokopaerbe_xml.R
 import dev.fizcode.tokopaerbe_xml.databinding.FragmentSplashBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SplashFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 @AndroidEntryPoint
 class SplashFragment : Fragment() {
 
     private var _binding: FragmentSplashBinding? = null
     private val binding get() = _binding!!
 
-    val splashViewModel: SplashViewModel by viewModels()
+    private val splashViewModel: SplashViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,10 +42,8 @@ class SplashFragment : Fragment() {
         translationX(animationDuration)
         translationY(animationDuration)
         handler.postDelayed({
-            println("HelloW")
             splashViewModel.onViewLoaded()
         }, 3000)
-
 
         bindViewModel()
 

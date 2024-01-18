@@ -50,4 +50,10 @@
     <string name="gabung_sekarang">Gabung Sekarang</string>
     <string name="lewati">Lewati</string>
     <string name="berikutnya">Berikutnya</string>
+    <string name="masuk">Masuk</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="atau_daftar_dengan">atau daftar dengan</string>
+    <string name="daftar">Daftar</string>
+    <string name="auth_t_n_c">Dengan masuk disini, kamu menyetujui Syarat dan Ketentuan serta Kebijakan Privasi TokoPhincon.</string>
 </resources>
