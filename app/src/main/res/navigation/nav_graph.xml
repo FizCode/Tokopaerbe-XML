@@ -17,9 +17,6 @@
         <action
             android:id="@+id/action_SplashFragment_to_signinFragment"
             app:destination="@id/signinFragment" />
-        <action
-            android:id="@+id/action_SplashFragment_to_mainMenuFragment"
-            app:destination="@id/mainMenuFragment" />
     </fragment>
 
     <fragment
@@ -40,11 +37,11 @@
         android:label="fragment_signin"
         tools:layout="@layout/fragment_signin" >
         <action
-            android:id="@+id/action_signinFragment_to_mainMenuFragment"
-            app:destination="@id/mainMenuFragment" />
-        <action
             android:id="@+id/action_signinFragment_to_signupFragment"
             app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_signinFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"

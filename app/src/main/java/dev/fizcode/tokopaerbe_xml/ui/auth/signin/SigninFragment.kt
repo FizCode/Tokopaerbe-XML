@@ -1,8 +1,6 @@
 package dev.fizcode.tokopaerbe_xml.ui.auth.signin
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,11 +32,13 @@ class SigninFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentSigninBinding.inflate(layoutInflater, container, false)
-        val root: View = binding.root
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         bindView()
-
-        return root
     }
 
     private fun bindView() {
@@ -52,25 +52,12 @@ class SigninFragment : Fragment() {
 
         binding.btnSigninMasuk.setOnClickListener {
             /* TODO: Form Validation */
+            findNavController().navigate(R.id.action_signinFragment_to_mainMenuFragment)
         }
 
         binding.btnSigninDaftar.setOnClickListener {
             findNavController().navigate(R.id.action_signinFragment_to_signupFragment)
         }
-    }
-
-    @Override
-    fun onBackPressed() {
-        Log.d("CDA", "onBackPressed Called")
-        val setIntent = Intent(Intent.ACTION_MAIN)
-        setIntent.addCategory(Intent.CATEGORY_HOME)
-        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(setIntent)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        onBackPressed()
     }
 
 }

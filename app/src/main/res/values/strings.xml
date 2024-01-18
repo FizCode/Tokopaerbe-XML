@@ -56,4 +56,9 @@
     <string name="atau_daftar_dengan">atau daftar dengan</string>
     <string name="daftar">Daftar</string>
     <string name="auth_t_n_c">Dengan masuk disini, kamu menyetujui Syarat dan Ketentuan serta Kebijakan Privasi TokoPhincon.</string>
+    <string name="username">John Doe</string>
+    <string name="home">Home</string>
+    <string name="store">Store</string>
+    <string name="whistlist">Whistlist</string>
+    <string name="transaction">Transaction</string>
 </resources>
