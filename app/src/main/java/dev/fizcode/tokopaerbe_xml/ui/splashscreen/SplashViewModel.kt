@@ -2,8 +2,10 @@ package dev.fizcode.tokopaerbe_xml.ui.splashscreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.fizcode.tokopaerbe_xml.repository.AuthRepository
+import dev.fizcode.tokopaerbe_xml.repository.HomeRepository
 import dev.fizcode.tokopaerbe_xml.repository.OnBoardingRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,22 +16,25 @@ import javax.inject.Inject
 @HiltViewModel
 class SplashViewModel @Inject constructor(
     private val onBoardingRepository: OnBoardingRepository,
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val homeRepository: HomeRepository
 ) : ViewModel() {
 
     val shouldSkipOnboarding: MutableLiveData<Boolean> = MutableLiveData()
     val shouldSkipAuth: MutableLiveData<Boolean> = MutableLiveData()
+    val shouldCheckAppTheme: MutableLiveData<String?> = MutableLiveData()
 
     fun onViewLoaded() {
         getOnboardingValue()
         getTokenValue()
+        getTheme()
     }
 
     private fun getOnboardingValue() {
         CoroutineScope(Dispatchers.IO).launch {
             val response = onBoardingRepository.getOnboarding()
             withContext(Dispatchers.Main) {
-                if (response == true) shouldSkipOnboarding.postValue(true)
+                if (response!!.isNotEmpty()) shouldSkipOnboarding.postValue(true)
                 else shouldSkipOnboarding.postValue(false)
             }
         }
@@ -45,6 +50,21 @@ class SplashViewModel @Inject constructor(
                     shouldSkipAuth.postValue(false)
                 }
             }
+        }
+    }
+
+    private fun getTheme() {
+        CoroutineScope(Dispatchers.IO).launch{
+            val response = homeRepository.getDarkTheme()
+            withContext(Dispatchers.Main) {
+                shouldCheckAppTheme.postValue(response)
+            }
+        }
+    }
+
+    fun setTheme(value: String) {
+        viewModelScope.launch {
+            homeRepository.setDarkTheme(value)
         }
     }
 }

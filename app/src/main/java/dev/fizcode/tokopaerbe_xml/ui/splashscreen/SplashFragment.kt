@@ -1,12 +1,14 @@
 package dev.fizcode.tokopaerbe_xml.ui.splashscreen
 
 import android.animation.ObjectAnimator
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -112,6 +114,27 @@ class SplashFragment : Fragment() {
                 findNavController().navigate(R.id.action_SplashFragment_to_OnBoardingFragment)
             }
         }
+
+        splashViewModel.shouldCheckAppTheme.observe(viewLifecycleOwner) { theme ->
+            if (theme == "LIGHT") {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            } else if (theme == "DARK") {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                if (!isDarkModeOn()) {
+                    splashViewModel.setTheme("LIGHT")
+                } else {
+                    splashViewModel.setTheme("DARK")
+                }
+            }
+
+        }
+    }
+
+    private fun isDarkModeOn(): Boolean {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
     }
 
 

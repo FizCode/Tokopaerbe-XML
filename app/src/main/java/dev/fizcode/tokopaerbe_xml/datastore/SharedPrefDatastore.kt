@@ -24,14 +24,14 @@ class SharedPrefDatastore @Inject constructor(private val context: Context) {
     }
 
     // Getting Onboarding datastore True or False
-    fun getOnboarding(): Flow<Boolean> {
+    fun getOnboarding(): Flow<String> {
         return context.datastoreOnboarding.data.map { preferences ->
-            preferences[Constant.PrefDatastore.ONBOARDING] as Boolean
+            preferences[Constant.PrefDatastore.ONBOARDING].orEmpty()
         }
     }
 
     // Set Onboarding datastore value as True
-    suspend fun setOnboarding(value: Boolean) {
+    suspend fun setOnboarding(value: String) {
         context.datastoreOnboarding.edit { preferences ->
             preferences[Constant.PrefDatastore.ONBOARDING] = value
         }
@@ -48,6 +48,21 @@ class SharedPrefDatastore @Inject constructor(private val context: Context) {
     suspend fun setToken(value: String) {
         context.datastoreOnboarding.edit { preferences ->
             preferences[Constant.PrefDatastore.ACCESS_TOKEN] = value
+        }
+    }
+
+    // Getting current App Theme
+    suspend fun getDarkTheme(): Flow<String> {
+        return context.datastoreOnboarding.data.map { preferences ->
+            preferences[Constant.PrefDatastore.SETTING_DARK].orEmpty()
+        }
+    }
+
+    // Insert Theme Setting
+    suspend fun setDarkTheme(value: String) {
+        context.datastoreOnboarding.edit { preferences ->
+            preferences[Constant.PrefDatastore.SETTING_DARK] = value
+            println("datastore: $value")
         }
     }
 }

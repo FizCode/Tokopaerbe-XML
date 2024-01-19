@@ -7,13 +7,13 @@ import javax.inject.Inject
 class OnBoardingRepository @Inject constructor(
     private val sharedPrefDatastore: SharedPrefDatastore
 ) {
-    suspend fun getOnboarding(): Boolean? {
+    suspend fun getOnboarding(): String? {
         return sharedPrefDatastore.getOnboarding().firstOrNull()
     }
-    suspend fun updateOnboarding(value: Boolean) {
+    suspend fun updateOnboarding(value: String) {
         return sharedPrefDatastore.setOnboarding(value)
     }
     suspend fun clearOnboarding() {
-        updateOnboarding(false)
+        updateOnboarding("")
     }
 }

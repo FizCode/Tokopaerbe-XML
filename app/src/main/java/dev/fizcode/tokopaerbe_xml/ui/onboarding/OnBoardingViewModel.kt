@@ -14,8 +14,7 @@ class OnBoardingViewModel @Inject constructor(
 
     fun completeOnboarding() {
         viewModelScope.launch {
-            println("ViewModel CompleteOnboarding")
-            onBoardingRepository.updateOnboarding(true)
+            onBoardingRepository.updateOnboarding("Complete")
         }
     }
 

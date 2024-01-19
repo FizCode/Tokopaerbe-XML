@@ -7,10 +7,10 @@ object Constant {
 
     object PrefDatastore{
         const val PREF_NAME = "Tokopaerbe"
-        val ONBOARDING = booleanPreferencesKey("ONBOARDING")
+        val ONBOARDING = stringPreferencesKey("ONBOARDING")
         val ACCESS_TOKEN = stringPreferencesKey("ACCESS_TOKEN")
         val SETTING_LANG_ID = booleanPreferencesKey("SETTING_LANG_ID")
-        val SETTING_DARK = booleanPreferencesKey("SETTING_DARK")
+        val SETTING_DARK = stringPreferencesKey("SETTING_DARK")
 
     }
 }

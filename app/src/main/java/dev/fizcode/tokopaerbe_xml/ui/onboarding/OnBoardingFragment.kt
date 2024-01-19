@@ -74,12 +74,10 @@ class OnBoardingFragment : Fragment() {
         // onClick Listener
         binding.btnJoin.setOnClickListener {
             viewModel.completeOnboarding()
-            println("fragment JoinButton")
             findNavController().navigate(R.id.action_OnBoardingFragment_to_signupFragment)
         }
         binding.btnSkip.setOnClickListener {
             viewModel.completeOnboarding()
-            println("fragment SkipButton")
             findNavController().navigate(R.id.action_OnBoardingFragment_to_signinFragment)
         }
         binding.btnNext.setOnClickListener {
