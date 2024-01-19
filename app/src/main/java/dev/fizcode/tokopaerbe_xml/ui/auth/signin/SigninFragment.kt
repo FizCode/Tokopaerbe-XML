@@ -39,6 +39,7 @@ class SigninFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindView()
+        bindViewModel()
     }
 
     private fun bindView() {
@@ -51,12 +52,17 @@ class SigninFragment : Fragment() {
         )
 
         binding.btnSigninMasuk.setOnClickListener {
-            /* TODO: Form Validation */
-            findNavController().navigate(R.id.action_signinFragment_to_mainMenuFragment)
+            signinViewModel.insertToken()
         }
 
         binding.btnSigninDaftar.setOnClickListener {
             findNavController().navigate(R.id.action_signinFragment_to_signupFragment)
+        }
+    }
+
+    private fun bindViewModel(){
+        signinViewModel.shouldOpenMenuPage.observe(viewLifecycleOwner){
+            findNavController().navigate(R.id.action_signinFragment_to_mainMenuFragment)
         }
     }
 

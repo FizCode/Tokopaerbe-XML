@@ -37,6 +37,10 @@ class MainMenuFragment : Fragment() {
 
         navView.setupWithNavController(navController)
 
+        binding.toolbar.inflateMenu(R.menu.menu_topbar_right)
+        val cart = binding.toolbar.menu
+        val actionCart = cart.findItem(R.id.action_cart)
+
     }
 
 }

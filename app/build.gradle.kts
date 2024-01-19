@@ -96,6 +96,9 @@ dependencies {
     // DependencyInjection For local unit tests
     testImplementation("com.google.dagger:hilt-android-testing:2.48.1")
     kaptTest("com.google.dagger:hilt-compiler:2.48.1")
+
+    // Json Animation: Lottie
+    implementation ("com.airbnb.android:lottie:3.6.1")
 }
 
 kapt {

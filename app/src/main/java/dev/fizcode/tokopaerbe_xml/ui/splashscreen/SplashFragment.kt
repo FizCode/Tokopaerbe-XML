@@ -98,9 +98,16 @@ class SplashFragment : Fragment() {
     }
 
     private fun bindViewModel() {
-        splashViewModel.shouldSkipOnboarding.observe(viewLifecycleOwner) {
-            if (it) {
-                findNavController().navigate(R.id.action_SplashFragment_to_signinFragment)
+
+        splashViewModel.shouldSkipOnboarding.observe(viewLifecycleOwner) { skipOnboard ->
+            if (skipOnboard) {
+                splashViewModel.shouldSkipAuth.observe(viewLifecycleOwner) { signedIn ->
+                    if (signedIn) {
+                        findNavController().navigate(R.id.action_SplashFragment_to_mainMenuFragment)
+                    } else {
+                        findNavController().navigate(R.id.action_SplashFragment_to_signinFragment)
+                    }
+                }
             } else {
                 findNavController().navigate(R.id.action_SplashFragment_to_OnBoardingFragment)
             }

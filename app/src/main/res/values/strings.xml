@@ -61,4 +61,9 @@
     <string name="store">Store</string>
     <string name="whistlist">Whistlist</string>
     <string name="transaction">Transaction</string>
+    <string name="logout">Logout</string>
+    <string name="en">EN</string>
+    <string name="id">ID</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
 </resources>
